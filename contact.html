@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="navbar-left">
+            <ul class="list">
+                <li><a href="index.html"><img src="image/logo-dumbways.png" alt=""></a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">My Projects</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <a href="contact.html">Contact Me</a>
+        </div>
+    </nav>
+
+    <form id="form" action="">
+        <div>
+            <label for="input-name">Name</label>
+            <input id="input-name" placeholder="Name" type="text" required>
+        </div>
+
+        <div>
+            <label for="input-email">Email</label>
+            <input id="input-email" placeholder="Email" type="email" required>
+        </div>
+
+        <div>
+            <label for="phone-number">Phone Number</label>
+            <input id="phone-number" placeholder="Phone Number" type="number" required>
+        </div>
+
+        <div>
+            <label for="input-subject">Subject</label>
+            <select id="input-subject">
+                <option value="" hidden>select</option>
+                <option>Relation Request</option>
+                <option>Colaboration Request</option>
+                <option>Discussion Request</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="input-message">Your Message</label>
+            <textarea id="input-message" cols="30" rows="10" required></textarea>
+        </div>
+
+        <div>
+            <button type="button" onclick="getData()">Submit</button>
+        </div>
+    </form>
+    
+    <script src="index.js"></script>
+</body>
+</html>

@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Weak 1 - Day 1</title>
+
     <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.css">
+    <link rel="stylesheet" href="style.css">
+
 </head>
-<body style="background-color: rgb(223, 227, 231);">
-    <div style="background-color: white; border-radius: 10px; width: 600px; margin: 50px auto; font-family: sans-serif; box-shadow: 0 0 10px black; padding: 100px 400px;">
-        
+<body>  
+    <nav>
+        <div class="navbar-left">
+            <ul class="list">
+                <li><a href="index.html"><img src="image/logo-dumbways.png" alt=""></a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">My Projects</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <a href="contact.html">Contact Me</a>
+        </div>
+    </nav>
+    
+    <div id="container">
         <div>
-            <h2>Hi Welcome to my hut</h2>
-            <p style="line-height: 1.5; text-align: justify;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis minus adipisci natus corporis quam, eveniet dolorum totam vitae qui libero fugit unde enim quaerat voluptate sequi debitis rerum. Nemo nobis fuga obcaecati natus! Soluta eos odit enim minus dignissimos aspernatur cum, sunt cupiditate! Doloremque velit similique reprehenderit autem consequuntur, dignissimos, deserunt a iste minus nulla excepturi quia, nobis consectetur ullam!</p>
+            <div class="description">
+                <h2>Hi Welcome to my hut</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quas minima soluta, voluptatum nostrum delectus est cum, asperiores unde non odit voluptatem quia ea fugiat numquam beatae itaque dicta nam, a alias in quidem nobis. Tenetur possimus accusantium quod numquam consectetur vitae odio nemo, impedit neque suscipit, dolorum libero repellendus at fugit quae sit illum reiciendis autem officia dolorem quibusdam labore non placeat aut? Id hic ratione modi non aliquam?</p>
+            </div>
+            <div class="button-group">
+                <a class="contact">contact</a>
+                <a class="download" href="">download CV <img style="width: 15px; margin: 0 5px;" src="image/downloads.png" alt=""></a>
+            </div>
+            <div class="media-social">
+                <img src="image/linkedin.png" alt="">
+                <img src="image/instagram (1).png" alt="">
+                <img src="image/facebook.png" alt="">
+                <img src="image/twitter.png" alt="">
+            </div>
         </div>
-
-        <button style="margin: 10px 0; background-color: rgb(17, 23, 39); border-radius: 20px; height: 30px; width: 90px; color: white; letter-spacing: 1px;">contact</button>
-        
-        <a style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-decoration: none; color: black; display: block; padding: 10px 0;" href="">download CV <img style="width: 15px; margin: 0 5px;" src="image/downloads.png" alt=""></a>
-        
-        <div style="width: 220px; margin: 10px auto;">
-            <img style="width: 30px;" src="image/linkedin.png" alt="">
-            <img style="width: 30px; margin: 0 20px;" src="image/instagram (1).png" alt="">
-            <img style="width: 30px;" src="image/facebook.png" alt="">
-            <img style="width: 30px; margin: 0 20px;" src="image/twitter.png" alt="">
-        </div>
-
-        <div style="width: 350px; box-shadow: 0 0 5px; margin: 40px auto 0 auto; border-radius: 10px; text-align: center;">
-            <img style="width: 100%; border-radius: 10px 10px 0 0;" src="image/5506218.jpg" alt="">
-            <div style="padding: 10px;">
+        <div class="profile-card">
+            <img src="image/5506218.jpg" alt="">
+            <div>
                 <h2>Muhammad Wildan Firdaus</h2>
                 <p>Fullstack Developer</p>
             </div>
         </div>
-        
     </div>
 </body>
 </html>
