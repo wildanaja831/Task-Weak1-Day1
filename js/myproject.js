@@ -9,7 +9,7 @@ function formAlert() {
     let nodejs = document.getElementById("nodejs").value;
     let nextjs = document.getElementById("nextjs").value;
     let typeScript = document.getElementById("typescript").value;
-    let image = document.getElementById("add-project-upload-image").value;
+    let image = document.getElementById("form-project-upload-image").value;
     
     if(projectName == "") {
         return alert("Isi Nama atau Judul Project Terlebih Dahulu!");
@@ -34,7 +34,7 @@ function submitData(event) {
     let startDate = document.getElementById("start-date").value;
     let endDate = document.getElementById("end-date").value;
     let description = document.getElementById("description").value;
-    let image = document.getElementById("add-project-upload-image").files;
+    let image = document.getElementById("form-project-upload-image").files;
 
     const reactjs = '<img src="assets/images/reactjs.png" alt="reactjs">';
     const nextjs = '<img src="assets/images/nextjs.png" alt="nextjs">';
