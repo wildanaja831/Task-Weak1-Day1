@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/project.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar-left">
+            <ul class="list">
+                <li><a href="index.html"><img src="assets/images/logo-dumbways.png" alt=""></a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="my-project.html">My Projects</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right">
+            <a href="contact.html">Contact Me</a>
+        </div>
+    </nav>
+    <!-- Navbar -->
+
+    <!-- Form Add New Project -->
+    <div class="form-projects">
+        <form class="form-projects-body" onsubmit="submitData(event)">
+            <h1>Add New Project</h1>
+            <div class="form-project-input">
+                <label for="project-name">Project Name</label>
+                <input type="text" placeholder="Name" id="project-name"/>
+            </div>
+            <div class="form-project-date-group">
+                <div class="form-project-date">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" id="start-date">
+                </div>
+                <div class="form-project-date">
+                    <label for="end-date">End Date</label>
+                    <input type="date" id="end-date">
+                </div>
+            </div>
+            <div class="form-project-input">
+                <label for="description">Description</label>
+                <textarea id="description" placeholder="Description"></textarea>
+            </div>
+            <div class="form-project-input">
+                <label>Technologies</label>
+                <div class="form-project-checkbox">
+                    <div class="technologies-checkbox up">
+                        <input type="checkbox" id="nodejs" value="nodejs">
+                        <label for="nodejs">Node Js</label>
+                    </div>
+                    <div class="technologies-checkbox up">
+                        <input type="checkbox" id="nextjs" value="nextjs">
+                        <label for="nextjs">Next Js</label>
+                    </div>
+                    <div class="technologies-checkbox">
+                        <input type="checkbox" id="reactjs" value="reactjs">
+                        <label for="reactjs">React Js</label>
+                    </div>
+                    <div class="technologies-checkbox">
+                        <input type="checkbox" id="typescript" value="typescript">
+                        <label for="typescript">TypeScript</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-project-upload-image-group">
+                <label>Upload Image</label>
+                <div class="upload-image-button">
+                    <label class="button" for="form-project-upload-image">choose</label>
+                    <input type="file" id="form-project-upload-image">
+                    <label class="img" for="form-project-upload-image"><img src="assets/images/upload-image.png" alt="upload-image"></label>
+                </div>
+            </div>
+            <div class="form-project-submit-button">
+                <button onclick="formAlert()">Submit</button>
+            </div>
+        </form>
+    </div>
+    <!-- Form Add New Project -->
+    
+    <!-- List Projects -->
+    <div class="list-projects">
+        <div class="project-container">
+            <h1>My Project</h1>
+            <div id= "project-list" class="project-list">
+                <div id="project-items" class="project-items">
+                    <div class="project-items-container">
+                        <div class="project-list-image">
+                            <img src="assets/images/project-tumbnail.png" alt="project-list">
+                        </div>
+                        <div class="project-list-title">
+                            <p class="list-title"><a target="_blank" href="project-detail.html">Dumbways Bootcamp - 2023</a></p>
+                            <p class="list-duration">durasi : 15 Mei 2023 sampai 15 Agustus 2023</p>
+                        </div>
+                        <div class="description">
+                            <p class="list-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium nisi, modi illo, odit temporibus quod inventore nobis iure perferendis repellendus ut? Beatae et ratione fugit alias ex expedita, quaerat corporis, nobis nesciunt atque earum placeat quod eaque quae odio.</p>
+                        </div>
+                        <div class="technology">
+                            <img src="assets/images/reactjs.png" alt="reactjs">
+                            <img src="assets/images/nextjs.png" alt="nextjs">
+                            <img src="assets/images/nodejs.png" alt="nodejs">
+                            <img src="assets/images/typescript.png" alt="typescript">
+                        </div>
+                        <div class="project-list-button">
+                            <button class="edit" type="button">Edit</button>
+                            <button class="delete" type="button">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- List Projects -->
+
+    <script src="js/myproject.js"></script>
+</body>
+</html>

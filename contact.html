@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Contact Me</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+    <!-- Navbar -->
     <nav>
         <div class="navbar-left">
             <ul class="list">
-                <li><a href="index.html"><img src="image/logo-dumbways.png" alt=""></a></li>
+                <li><a href="index.html"><img src="assets/images/logo-dumbways.png" alt=""></a></li>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="">My Projects</a></li>
+                <li><a href="my-project.html">My Projects</a></li>
             </ul>
         </div>
         <div class="navbar-right">
             <a href="contact.html">Contact Me</a>
         </div>
     </nav>
+    <!-- Navbar -->
     
+    <!-- Form Contact -->
     <form>
+        <h1>Contact Me</h1>
         <div>
             <label for="input-name">Name</label>
             <input id="input-name" placeholder="Name" type="text" required>
@@ -50,14 +55,15 @@
 
         <div>
             <label for="input-message">Your Message</label>
-            <textarea id="input-message" cols="30" rows="10" required></textarea>
+            <textarea id="input-message" cols="30" rows="10" placeholder="Description.." required></textarea>
         </div>
 
         <div>
             <button type="button" onclick="getData()">Submit</button>
         </div>
     </form>
+    <!-- Form Contact -->
     
-    <script src="index.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

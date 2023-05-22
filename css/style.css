@@ -10,6 +10,65 @@ body{
   padding: 0;
 }
 
+/* Navbar */
+
+nav{
+  background-color: rgb(244, 243, 243);
+  display: flex;
+  align-items: center;
+}
+
+.navbar-left{
+  flex: 50%;
+}
+
+.navbar-right{
+  flex: 50%;
+  text-align: end;
+  margin-right: 25px;
+}
+
+.navbar-right a{
+  cursor: pointer;
+  background-color: rgb(17, 23, 39);
+  padding: 8px 15px;
+  border-radius: 10px;
+  color: white;
+  font-size: 15 px;
+}
+
+.navbar-right a:hover{
+  border: 1px solid;
+  background: rgb(244, 243, 243);
+  color: black;
+}
+
+.list{
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.list li{
+}
+
+.list li a{
+  font-size: 18px;
+  margin: 15px;
+  color: black;
+}
+
+.list li a:hover{
+  color: orange;
+}
+
+.list li a img{
+  width: 80px;
+}
+
+/* Navbar */
+
 #container{
     display: flex; 
     background-color: white; 
@@ -34,12 +93,20 @@ body{
 
 .contact{
   margin: 10px 0; 
-  padding: 8px 15px; 
+  padding: 8px 10px 8px 15px; 
   background-color: rgb(17, 23, 39); 
   border-radius: 20px; 
   width: 70px; 
   color: white; 
   letter-spacing: 1px;
+}
+
+.contact:hover{
+  cursor: pointer;
+  padding: 7px 9px 7px 14px;
+  border: 1px solid;
+  background: rgb(244, 243, 243);
+  color: black;
 }
 
 .download{
@@ -76,57 +143,7 @@ body{
   padding: 10px;
 }
 
-nav{
-  background-color: rgb(244, 243, 243);
-  display: flex;
-  align-items: center;
-}
-
-.navbar-left{
-  flex: 50%;
-}
-
-.navbar-right{
-  flex: 50%;
-  text-align: end;
-  margin-right: 25px;
-}
-
-.navbar-right a{
-  background-color: rgb(17, 23, 39);
-  padding: 8px 15px;
-  border-radius: 10px;
-  color: white;
-  font-size: 15 px;
-}
-
-.navbar-right a:hover{
-  color: orange;
-}
-
-.list{
-  margin: 0;
-  list-style-type: none;
-  display: flex;
-  align-items: center;
-}
-
-.list li{
-}
-
-.list li a{
-  font-size: 18px;
-  margin: 15px;
-  color: black;
-}
-
-.list li a:hover{
-  color: orange;
-}
-
-.list li a img{
-  width: 80px;
-}
+/* Contact */
 
 form{ 
   border-radius: 10px;
@@ -136,8 +153,12 @@ form{
   padding: 20px;
 }
 
+form h1{
+  text-align: center;
+}
+
 form div{
-  padding: 10px;
+  padding: 10px 35px 10px 20px;
 }
 
 form div label{
@@ -149,17 +170,11 @@ input, select, textarea{
   border-radius: 5px;
   margin: 0 10px 0 0;
   border: 1px solid #dbdbdb;
-  background-color: #dfdede;
   width: 100%;
-}
-
-input{
-  height: 25px; 
-  padding: 5px;
-}
-
-select{
-  height: 40px;
+  padding: 13px 10px;
+  border: 0;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+  resize: none;
 }
 
 button{
@@ -174,3 +189,5 @@ button{
 button:hover{
   background-color: orange;
 }
+
+/* Contact */
