@@ -19,7 +19,7 @@ function formAlert() {
         return alert("Isi Tanggal Diakhirinya Project Terlebih Dahulu!");
     } else if(description == "") {
         return alert("Isi Deskripsi atau Isi Project Telebih Dahulu!");
-    } else if( reactjs == "" || nodejs == "" || nextjs == "" || typeScript == "") {
+    } else if( reactjs.checked == "" || nodejs.checked == "" || nextjs.checked == "" || typeScript.checked == "") {
         return alert("Isi Teknologi Yang Digunakan Telebih Dahulu!");
     } else if(image == "") {
         return alert("Pilih Gambar Yang Ingin Dimasukan Terlebih Dahulu!");
@@ -29,12 +29,37 @@ function formAlert() {
 function submitData(event) {
     event.preventDefault();
 
+    function getDistanceTime(){
+        let diff = new Date(endDate) - new Date(startDate);
+
+        let days = Math.floor(diff / (24 * 60 * 60 * 1000));
+        let months = Math.floor(days / 30);
+        let years = Math.floor(months / 12);
+        let remainingDays = days % 30;
+        let remainingMonths = months % 12;
+      
+        if (years == 1 && remainingMonths == 1 && remainingDays == 1) {
+            return `${years} Year ${remainingMonths} Month ${remainingDays} Day`;
+        } else if (years > 1 && remainingMonths > 1 && remainingDays > 1){
+            return `${years} Years ${remainingMonths} Months ${remainingDays} Days`;
+        } else if (years == 0 && remainingMonths == 1 && remainingDays == 1){
+            return `${remainingMonths} Month ${remainingDays} Day`;
+        } else if (years == 0 && remainingMonths > 1 && remainingDays > 1){
+            return `${remainingMonths} Months ${remainingDays} Days`;
+        } else if (remainingMonths == 0 && remainingDays == 1){
+            return `${remainingDays} Day`;
+        } else {
+            return `${remainingDays} Days`;
+        }
+    }
+
     // Deklarasi variable dari input
     let title = document.getElementById("project-name").value;
     let startDate = document.getElementById("start-date").value;
     let endDate = document.getElementById("end-date").value;
     let description = document.getElementById("description").value;
     let image = document.getElementById("form-project-upload-image").files;
+    let duration = getDistanceTime();
 
     const reactjs = '<img src="assets/images/reactjs.png" alt="reactjs">';
     const nextjs = '<img src="assets/images/nextjs.png" alt="nextjs">';
@@ -52,14 +77,14 @@ function submitData(event) {
     // Membuat object data project
     let data = {
         title,
-        startDate,
-        endDate,
+        duration,
         description,
         reactjsImg,
         nextjsImg,
         nodejsImg,
         typeScriptImg,
         imageUrl,
+        postAt: new Date()
     };
     dataProject.push(data);
     loopProjectList();
@@ -77,7 +102,7 @@ function loopProjectList() {
                     </div>
                     <div class="project-list-title">
                         <p class="list-title"><a target="_blank" href="project-detail.html">${dataProject[i].title}</a></p>
-                        <p class="list-duration">durasi: ${dataProject[i].startDate} sampai ${dataProject[i].endDate}</p>
+                        <p class="list-duration">durasi: ${dataProject[i].duration} </p>
                     </div>
                     <div>
                         <p class="list-description">${dataProject[i].description}</p>
@@ -96,3 +121,7 @@ function loopProjectList() {
             </div>`;
     }
 }
+
+// setInterval(function () {
+//     loopProjectList();
+//   }, 3000);
