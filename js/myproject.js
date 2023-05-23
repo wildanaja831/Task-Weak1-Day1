@@ -37,21 +37,21 @@ function submitData(event) {
         let years = Math.floor(months / 12);
         let remainingDays = days % 30;
         let remainingMonths = months % 12;
+        let daysAffix = `$`
       
-        if (years == 1 && remainingMonths == 1 && remainingDays == 1) {
-            return `${years} Year ${remainingMonths} Month ${remainingDays} Day`;
-        } else if (years > 1 && remainingMonths > 1 && remainingDays > 1){
+        if (years == 1 && remainingMonths > 0 && remainingDays > 0) {
             return `${years} Years ${remainingMonths} Months ${remainingDays} Days`;
-        } else if (years == 0 && remainingMonths == 1 && remainingDays == 1){
-            return `${remainingMonths} Month ${remainingDays} Day`;
-        } else if (years == 0 && remainingMonths > 1 && remainingDays > 1){
+        } else if (years > 0 && remainingMonths > 0 && remainingDays == 0){
+            return `${years} Years ${remainingMonths} Months`;
+        } else if (years > 0 && remainingMonths == 0 && remainingDays == 0){
+            return `${years} Years`;
+        } else if (years == 0 && remainingMonths > 0 && remainingDays > 0){
             return `${remainingMonths} Months ${remainingDays} Days`;
-        } else if (remainingMonths == 0 && remainingDays == 1){
-            return `${remainingDays} Day`;
-        } else {
+        } else if (years == 0 && remainingMonths == 0 && remainingDays > 0){
             return `${remainingDays} Days`;
-        }
+        } 
     }
+    
 
     // Deklarasi variable dari input
     let title = document.getElementById("project-name").value;
