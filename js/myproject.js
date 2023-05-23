@@ -39,14 +39,18 @@ function submitData(event) {
         let remainingMonths = months % 12;
         let daysAffix = `$`
       
-        if (years == 1 && remainingMonths > 0 && remainingDays > 0) {
+        if (years > 0 && remainingMonths > 0 && remainingDays > 0) {
             return `${years} Years ${remainingMonths} Months ${remainingDays} Days`;
         } else if (years > 0 && remainingMonths > 0 && remainingDays == 0){
             return `${years} Years ${remainingMonths} Months`;
         } else if (years > 0 && remainingMonths == 0 && remainingDays == 0){
             return `${years} Years`;
+        } else if (years > 0 && remainingMonths == 0 && remainingDays > 0){
+            return `${years} Years ${remainingDays} Days`;
         } else if (years == 0 && remainingMonths > 0 && remainingDays > 0){
             return `${remainingMonths} Months ${remainingDays} Days`;
+        } else if (years == 0 && remainingMonths > 0 && remainingDays == 0){
+            return `${remainingMonths} Months`;
         } else if (years == 0 && remainingMonths == 0 && remainingDays > 0){
             return `${remainingDays} Days`;
         } 
