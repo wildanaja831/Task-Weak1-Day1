@@ -13,60 +13,117 @@ body{
 /* Navbar */
 
 nav{
-    background-color: rgb(244, 243, 243);
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-left{
-    flex: 50%;
-  }
-  
-  .navbar-right{
-    flex: 50%;
-    text-align: end;
-    margin-right: 25px;
-  }
-  
-  .navbar-right a{
-    cursor: pointer;
-    background-color: rgb(17, 23, 39);
-    padding: 8px 15px;
-    border-radius: 10px;
-    color: white;
-    font-size: 15 px;
-  }
-  
-  .navbar-right a:hover{
-    border: 1px solid;
-    background: rgb(244, 243, 243);
-    color: black;
-  }
+  background-color: rgb(244, 243, 243);
+  display: flex;
+  align-items: center;
+}
 
-  .list{
-    margin: 0;
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-  }
-  
-  .list li{
-  }
-  
-  .list li a{
-    font-size: 18px;
-    margin: 15px;
-    color: black;
-  }
-  
-  .list li a:hover{
-    color: orange;
-  }
-  
-  .list li a img{
-    width: 80px;
-  }
+.active{
+  color: orange !important;
+}
 
+.navbar-left{
+  flex: 50%;
+}
+
+.navbar-right{
+  flex: 50%;
+  text-align: end;
+  margin-right: 25px;
+}
+
+.navbar-right a{
+  cursor: pointer;
+  background-color: rgb(17, 23, 39);
+  padding: 8px 15px;
+  border-radius: 10px;
+  color: white;
+  font-size: 15 px;
+}
+
+.navbar-right a:hover{
+  border: 1px solid;
+  background: rgb(244, 243, 243);
+  color: black;
+}
+
+.list{
+  margin: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+}
+
+.list li{
+}
+
+.list li a{
+  font-size: 18px;
+  margin: 15px;
+  color: black;
+}
+
+.list li a:hover{
+  color: orange;
+}
+
+.list li a img{
+  width: 80px;
+}
+
+.navbar-dropdown button{
+  margin: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  border: none;
+  display: none;
+} 
+
+.dropdown-container {
+  font-size: 18px;
+  list-style-type: none;
+  display: none;
+}
+
+.dropdown-container a, .dropdown-contact {
+  text-decoration: none;
+  color: black;
+  background-color: #D3D3D3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.dropdown-container .dropdown-active{
+  text-decoration: none;
+  color: black;
+  background-color: orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.dropdown-contact a{
+  width: 100px;
+  background-color: rgb(17, 23, 39);
+  padding: 8px 15px;
+  border-radius: 10px;
+  color: white;
+  font-size: 15 px;
+}
+
+.dropdown-container a:hover{
+  background-color: orange;
+}
+
+.dropdown-contact a:hover{
+  padding: 7px 14px;
+  border: 1px solid black;
+  background: #D3D3D3;
+  color: black;
+}
 /* Navbar */
   
 /* Form Add Projects */
@@ -194,8 +251,7 @@ form h1{
 
 .project-container{
   width: 1200px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 50px 0;
 }
 .project-container h1{
   text-align: center;
@@ -284,3 +340,26 @@ cursor: pointer;
   background-color: white;
 }
 /* List Projects */
+
+@media only screen and (max-width: 900px){
+  
+  .items-hidden{
+    display: none;
+  }
+
+  .navbar-dropdown button{
+    display: block;
+  }
+
+  .form-projects-body{
+    width: 80%;
+  }
+
+  .project-list{
+    justify-content: center;
+  }
+
+  .project-items{
+    width: 40%;
+  }
+}

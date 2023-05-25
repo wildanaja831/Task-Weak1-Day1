@@ -29,3 +29,17 @@ function getData(){
     a.href = `mailto:${emailReceiver}?subject=${subject}&body=Halo, Nama saya ${name}. ${message}. Anda bisa menghubungi saya di nomor ${phone}, Terimaksih.`
     a.click()
 }
+
+let dropdown = false;
+
+function openDropdown(){
+  let dropdownContainer = document.getElementById("dropdown-container");
+
+  if (!dropdown) {
+    dropdownContainer.style.display = "block";
+    dropdown = true;
+  } else {
+    dropdownContainer.style.display = "none";
+    dropdown = false;
+  }
+}

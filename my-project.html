@@ -7,6 +7,7 @@
     <title>Document</title>
 
     <link rel="stylesheet" href="css/project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -15,14 +16,27 @@
         <div class="navbar-left">
             <ul class="list">
                 <li><a href="index.html"><img src="assets/images/logo-dumbways.png" alt=""></a></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="my-project.html">My Projects</a></li>
+                <li><a class="items-hidden" href="index.html">Home</a></li>
+                <li><a class="items-hidden active" href="my-project.html">My Projects</a></li>
             </ul>
         </div>
-        <div class="navbar-right">
+        <div class="navbar-right items-hidden">
             <a href="contact.html">Contact Me</a>
         </div>
+        <div class="navbar-dropdown" id="bars">
+            <button onclick="openDropdown()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </nav>
+
+    <div class="dropdown-container" id="dropdown-container">
+        <a href="index.html">Home</a>
+        <a href="my-project.html" class="dropdown-active">My Projects</a>
+        <div class="dropdown-contact">
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
     <!-- Navbar -->
 
     <!-- Form Add New Project -->
@@ -112,11 +126,36 @@
                         </div>
                     </div>
                 </div>
+                <div id="project-items" class="project-items">
+                    <div class="project-items-container">
+                        <div class="project-list-image">
+                            <img src="assets/images/project-tumbnail.png" alt="project-list">
+                        </div>
+                        <div class="project-list-title">
+                            <p class="list-title"><a target="_blank" href="project-detail.html">Dumbways Bootcamp - 2023</a></p>
+                            <p class="list-duration">durasi : 15 Mei 2023 sampai 15 Agustus 2023</p>
+                        </div>
+                        <div class="description">
+                            <p class="list-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium nisi, modi illo, odit temporibus quod inventore nobis iure perferendis repellendus ut? Beatae et ratione fugit alias ex expedita, quaerat corporis, nobis nesciunt atque earum placeat quod eaque quae odio.</p>
+                        </div>
+                        <div class="technology">
+                            <img src="assets/images/reactjs.png" alt="reactjs">
+                            <img src="assets/images/nextjs.png" alt="nextjs">
+                            <img src="assets/images/nodejs.png" alt="nodejs">
+                            <img src="assets/images/typescript.png" alt="typescript">
+                        </div>
+                        <div class="project-list-button">
+                            <button class="edit" type="button">Edit</button>
+                            <button class="delete" type="button">Delete</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <!-- List Projects -->
 
     <script src="js/myproject.js"></script>
+    <script src="js/index.js"></script>
 </body>
 </html>

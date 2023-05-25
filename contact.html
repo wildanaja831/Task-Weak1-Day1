@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Me</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
@@ -15,14 +16,27 @@
         <div class="navbar-left">
             <ul class="list">
                 <li><a href="index.html"><img src="assets/images/logo-dumbways.png" alt=""></a></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="my-project.html">My Projects</a></li>
+                <li><a class="items-hidden" href="index.html">Home</a></li>
+                <li><a class="items-hidden" href="my-project.html">My Projects</a></li>
             </ul>
         </div>
-        <div class="navbar-right">
+        <div class="navbar-right items-hidden">
             <a href="contact.html">Contact Me</a>
         </div>
+        <div class="navbar-dropdown" id="bars">
+            <button onclick="openDropdown()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </nav>
+
+    <div class="dropdown-container" id="dropdown-container">
+        <a href="index.html">Home</a>
+        <a href="my-project.html">My Projects</a>
+        <div class="dropdown-contact">
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
     <!-- Navbar -->
     
     <!-- Form Contact -->
@@ -58,7 +72,7 @@
             <textarea id="input-message" cols="30" rows="10" placeholder="Description.." required></textarea>
         </div>
 
-        <div>
+        <div class="button-submit">
             <button type="button" onclick="getData()">Submit</button>
         </div>
     </form>

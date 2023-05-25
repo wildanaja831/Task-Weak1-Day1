@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Weak 1 - Day 1</title>
 
-    <link rel="stylesheet" href="fontawesome-free-6.4.0-web/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
 
 </head>
@@ -18,14 +18,27 @@
         <div class="navbar-left">
             <ul class="list">
                 <li><a href="index.html"><img src="assets/images/logo-dumbways.png" alt=""></a></li>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="my-project.html">My Projects</a></li>
+                <li><a class="items-hidden active" href="index.html">Home</a></li>
+                <li><a class="items-hidden" href="my-project.html">My Projects</a></li>
             </ul>
         </div>
-        <div class="navbar-right">
+        <div class="navbar-right items-hidden">
             <a href="contact.html">Contact Me</a>
         </div>
+        <div class="navbar-dropdown" id="bars">
+            <button onclick="openDropdown()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </nav>
+
+    <div class="dropdown-container" id="dropdown-container">
+        <a href="index.html" class="dropdown-active">Home</a>
+        <a href="my-project.html">My Projects</a>
+        <div class="dropdown-contact">
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
     <!-- Navbar -->
     
     <!-- Boday Container -->
@@ -56,5 +69,6 @@
     </div>
     <!-- Body Container -->
 
+    <script src="js/index.js"></script>
 </body>
 </html>
