@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar-left">
+            <ul class="list">
+                <li><a href="index.html"><img src="assets/images/logo-dumbways.png" alt=""></a></li>
+                <li><a class="items-hidden active" href="index.html">Home</a></li>
+                <li><a class="items-hidden" href="my-project.html">My Projects</a></li>
+                <li><a class="items-hidden" href="testimonial.html">Testimonials</a></li>
+            </ul>
+        </div>
+        <div class="navbar-right items-hidden">
+            <a href="contact.html">Contact Me</a>
+        </div>
+        <div class="navbar-dropdown" id="bars">
+            <button onclick="openDropdown()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="dropdown-container" id="dropdown-container">
+        <a href="index.html">Home</a>
+        <a href="my-project.html">My Projects</a>
+        <a href="testimonial.html" class="dropdown-active">Testimonials</a>
+        <div class="dropdown-contact">
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+    <!-- Navbar -->
+
+    <div class="testimonial-container">
+        <h1>My Testimonials</h1>
+        <section class="testimonials" id="testimonials">
+            <!-- <div class="testimonial-card">
+                <img src="assets/images/Screenshot (1).png" alt="">
+                <p class="paragraph">" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus eum quidem excepturi. Autem cum architecto sed libero aliquid quos consequuntur. "</p>
+                <p class="author">~ M Wildan Firdaus</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="assets/images/Screenshot (1).png" alt="">
+                <p class="paragraph">" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus eum quidem excepturi. Autem cum architecto sed libero aliquid quos consequuntur. "</p>
+                <p class="author">~ M Wildan Firdaus</p>
+            </div>
+            <div class="testimonial-card">
+                <img src="assets/images/Screenshot (1).png" alt="">
+                <p class="paragraph">" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus eum quidem excepturi. Autem cum architecto sed libero aliquid quos consequuntur. "</p>
+                <p class="author">~ M Wildan Firdaus</p>
+            </div> -->
+        </section>
+    </div>
+
+
+    <script src="js/index.js"></script>
+    <script src="js/testimonial.js"></script>
+</body>
+</html>
