@@ -363,3 +363,29 @@ cursor: pointer;
     width: 40%;
   }
 }
+
+@media only screen and (max-width: 600px){
+  .items-hidden{
+    display: none;
+  }
+
+  .navbar-dropdown button{
+    display: block;
+  }
+
+  .form-projects-body{
+    width: 80%;
+  }
+
+  .project-list-image{
+    width: 100%;
+  }
+
+  .project-list{
+    justify-content: center;
+  }
+
+  .project-items{
+    width: 80%;
+  }
+}
