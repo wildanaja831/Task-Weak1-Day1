@@ -245,6 +245,28 @@ nav{
   font-weight: bold;
   text-align: right;
 }
+
+.button-rate-group button{
+  margin: 10px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  background-color: black;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.button-rate-group button i{
+  color: yellow;
+}  
+
+.button-rate-group button:hover{
+  padding: 8px;
+  color: black;
+  border: 2px solid black;
+  background-color: rgb(244, 243, 243);
+}  
+
 /* Testimonials */
 
 

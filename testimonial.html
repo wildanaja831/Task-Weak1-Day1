@@ -15,9 +15,9 @@
         <div class="navbar-left">
             <ul class="list">
                 <li><a href="index.html"><img src="assets/images/logo-dumbways.png" alt=""></a></li>
-                <li><a class="items-hidden active" href="index.html">Home</a></li>
+                <li><a class="items-hidden" href="index.html">Home</a></li>
                 <li><a class="items-hidden" href="my-project.html">My Projects</a></li>
-                <li><a class="items-hidden" href="testimonial.html">Testimonials</a></li>
+                <li><a class="items-hidden active" href="testimonial.html">Testimonials</a></li>
             </ul>
         </div>
         <div class="navbar-right items-hidden">
@@ -42,21 +42,38 @@
 
     <div class="testimonial-container">
         <h1>My Testimonials</h1>
+        <div class="button-rate-group">
+            <button onclick="showAllTestimonial()">all <i class="fa-solid fa-star"></i></button>
+            <button onclick="filterRating(1)">1 <i class="fa-solid fa-star"></i></button>
+            <button onclick="filterRating(2)">2 <i class="fa-solid fa-star"></i></button>
+            <button onclick="filterRating(3)">3 <i class="fa-solid fa-star"></i></button>
+            <button onclick="filterRating(4)">4 <i class="fa-solid fa-star"></i></button>
+            <button onclick="filterRating(5)">5 <i class="fa-solid fa-star"></i></button>
+        </div>
         <section class="testimonials" id="testimonials">
             <!-- <div class="testimonial-card">
                 <img src="assets/images/Screenshot (1).png" alt="">
                 <p class="paragraph">" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus eum quidem excepturi. Autem cum architecto sed libero aliquid quos consequuntur. "</p>
-                <p class="author">~ M Wildan Firdaus</p>
+                <div style="display: flex; float: right;">
+                    <p style="margin-right: 10px;">1<i class="fa-solid fa-star"></i></p>
+                    <p class="author">~ M Wildan Firdaus</p>
+                </div>
             </div>
             <div class="testimonial-card">
                 <img src="assets/images/Screenshot (1).png" alt="">
                 <p class="paragraph">" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus eum quidem excepturi. Autem cum architecto sed libero aliquid quos consequuntur. "</p>
-                <p class="author">~ M Wildan Firdaus</p>
+                <div style="display: flex; float: right;">
+                    <p style="margin-right: 10px;">2<i class="fa-solid fa-star"></i></p>
+                    <p class="author">~ M Wildan Firdaus</p>
+                </div>
             </div>
             <div class="testimonial-card">
                 <img src="assets/images/Screenshot (1).png" alt="">
                 <p class="paragraph">" Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus eum quidem excepturi. Autem cum architecto sed libero aliquid quos consequuntur. "</p>
-                <p class="author">~ M Wildan Firdaus</p>
+                <div style="display: flex; float: right;">
+                    <p style="margin-right: 10px;">3<i class="fa-solid fa-star"></i></p>
+                    <p class="author">~ M Wildan Firdaus</p>
+                </div>
             </div> -->
         </section>
     </div>
