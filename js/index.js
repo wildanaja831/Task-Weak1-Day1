@@ -17,11 +17,11 @@ function getData(){
         return alert("Message Harus Di Isi!");
     }
 
-    // console.log(name)
-    // console.log(email)
-    // console.log(phone)
-    // console.log(subject)
-    // console.log(message)
+    console.log(name)
+    console.log(email)
+    console.log(phone)
+    console.log(subject)
+    console.log(message)
 
     let emailReceiver = "wildanaja110404@gmail.com"
 

@@ -22,12 +22,16 @@ async function showAllTestimonial(){
     let cardHTML = "";
 
     response.forEach(function(item){
-        cardHTML += `<div class="testimonial-card">
-                        <img src="${item.image}" alt="">
-                        <p class="paragraph">" ${item.paragraph} "</p>
-                        <div style="display: flex; float: right;">
-                            <p style="margin-right: 10px;">${item.rate}<i class="fa-solid fa-star"></i></p>
-                            <p class="author">~ ${item.author}</p>
+        cardHTML += `<div class="d-flex cardt my-3">
+                        <div class="card">
+                            <img src="${item.image}" class="card-img-top" alt="..." style="width: 400px; height: 300px; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text">${item.paragraph}</p>
+                                <div class="d-flex my-2 float-end">
+                                    <p>${item.rate} <i class="fa-solid fa-star"></i></p>
+                                    <p class="ms-2">~ ${item.author}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>`;
     });
@@ -49,14 +53,18 @@ async function filterRating(rate){
         cardHTML += `<h3>Data Kosong</h3>`;
     } else{
         filtering.forEach(function(item){
-            cardHTML += `<div class="testimonial-card">
-                            <img src="${item.image}" alt="">
-                            <p class="paragraph">" ${item.paragraph} "</p>
-                            <div style="display: flex; float: right;">
-                                <p style="margin-right: 10px;">${item.rate}<i class="fa-solid fa-star"></i></p>
-                                <p class="author">~ ${item.author}</p>
+            cardHTML += `<div class="d-flex cardt my-3">
+                            <div class="card">
+                                <img src="${item.image}" class="card-img-top" alt="..." style="width: 400px; height: 300px; object-fit: cover;">
+                                <div class="card-body">
+                                    <p class="card-text">${item.paragraph}</p>
+                                    <div class="d-flex my-2 float-end">
+                                        <p>${item.rate} <i class="fa-solid fa-star"></i></p>
+                                        <p class="ms-2">~ ${item.author}</p>
+                                    </div>
+                                </div>
                             </div>
-                         </div>`;
+                        </div>`;
         });
     };
 
