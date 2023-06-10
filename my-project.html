@@ -6,157 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="css/project.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 </head>
-<body>
+<body class="bg-secondary bg-opacity-25">
 
     <!-- Navbar -->
-    <nav>
-        <div class="navbar-left">
-            <ul class="list">
-                <li><a href="index.html"><img src="assets/images/logo-dumbways.png" alt=""></a></li>
-                <li><a class="items-hidden" href="index.html">Home</a></li>
-                <li><a class="items-hidden active" href="my-project.html">My Projects</a></li>
-                <li><a class="items-hidden" href="testimonial.html">Testimonials</a></li>
-            </ul>
-        </div>
-        <div class="navbar-right items-hidden">
-            <a href="contact.html">Contact Me</a>
-        </div>
-        <div class="navbar-dropdown" id="bars">
-            <button onclick="openDropdown()">
-                <i class="fa-solid fa-bars"></i>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid mx-5">
+            <a class="navbar-brand" href="#">
+                <img src="assets/images/logo-dumbways.png" alt="Bootstrap" width="50" height="50">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse justify-content-lg-between text-center" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="my-project.html">My Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="testimonial.html">Testimonials</a>
+                    </li>
+                </ul>
+                <div class="d-flex justify-content-center">
+                    <a class="btn btn-outline-success" href="contact.html">Contact Me</a>
+                </div>
+            </div>
         </div>
     </nav>
-
-    <div class="dropdown-container" id="dropdown-container">
-        <a href="index.html">Home</a>
-        <a href="my-project.html" class="dropdown-active">My Projects</a>
-        <a href="testimonial.html">Testimonials</a>
-        <div class="dropdown-contact">
-            <a href="contact.html">Contact</a>
-        </div>
-    </div>
     <!-- Navbar -->
 
-    <!-- Form Add New Project -->
-    <div class="form-projects">
-        <form class="form-projects-body" onsubmit="submitData(event)">
-            <h1>Add New Project</h1>
-            <div class="form-project-input">
-                <label for="project-name">Project Name</label>
-                <input type="text" placeholder="Name" id="project-name"/>
-            </div>
-            <div class="form-project-date-group">
-                <div class="form-project-date">
-                    <label for="start-date">Start Date</label>
-                    <input type="date" id="start-date">
+    <!-- Form Add New Project -->'
+    <div class="container-fluid" style="margin: 50px 0 100px 0;">
+        <div class="w-75 m-auto">
+            <h2 class="text-center my-3">Add New Projects</h2>
+            <form onsubmit="submitData(event)">
+                <div class="mb-3">
+                    <label for="project-title" class="form-label">Title Project</label>
+                    <input type="text" class="form-control" placeholder="Title..." id="project-title">
                 </div>
-                <div class="form-project-date">
-                    <label for="end-date">End Date</label>
-                    <input type="date" id="end-date">
-                </div>
-            </div>
-            <div class="form-project-input">
-                <label for="description">Description</label>
-                <textarea id="description" placeholder="Description"></textarea>
-            </div>
-            <div class="form-project-input">
-                <label>Technologies</label>
-                <div class="form-project-checkbox">
-                    <div class="technologies-checkbox up">
-                        <input type="checkbox" id="nodejs" value="nodejs">
-                        <label for="nodejs">Node Js</label>
+                <div class="d-flex justify-content-between mb-3">
+                    <div class="w-50 me-3">
+                        <label for="start-date" class="form-label">Start Date</label>
+                        <input type="date" class="form-control " id="start-date">
                     </div>
-                    <div class="technologies-checkbox up">
-                        <input type="checkbox" id="nextjs" value="nextjs">
-                        <label for="nextjs">Next Js</label>
-                    </div>
-                    <div class="technologies-checkbox">
-                        <input type="checkbox" id="reactjs" value="reactjs">
-                        <label for="reactjs">React Js</label>
-                    </div>
-                    <div class="technologies-checkbox">
-                        <input type="checkbox" id="typescript" value="typescript">
-                        <label for="typescript">TypeScript</label>
+                    <div class="w-50">
+                        <label for="end-date" class="form-label">End Date</label>
+                        <input type="date" class="form-control w-100" id="end-date">
                     </div>
                 </div>
-            </div>
-            <div class="form-project-upload-image-group">
-                <label>Upload Image</label>
-                <div class="upload-image-button">
-                    <label class="button" for="form-project-upload-image">choose</label>
-                    <input type="file" id="form-project-upload-image">
-                    <label class="img" for="form-project-upload-image"><img src="assets/images/upload-image.png" alt="upload-image"></label>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control" placeholder="Description..." id="description" rows="5" style="resize: none;"></textarea>
                 </div>
-            </div>
-            <div class="form-project-submit-button">
-                <button onclick="formAlert()">Submit</button>
-            </div>
-        </form>
+                <div class="mb-3 form-check d-flex">
+                    <div class="">
+                        <div>
+                            <input type="checkbox" class="form-check-input" id="nodejs" value="nodejs">
+                            <label class="form-check-label" for="nodejs">Node JS</label>
+                        </div>
+                        <div class="">
+                            <input type="checkbox" class="form-check-input" id="nextjs" value="nextjs">
+                            <label class="form-check-label" for="nextjs">Next JS</label>
+                        </div>
+                    </div>
+                    <div class="ms-5">    
+                        <div>
+                            <input type="checkbox" class="form-check-input" id="reactjs" value="reactjs">
+                            <label class="form-check-label" for="reactjs">React JS</label>
+                        </div>
+                        <div class="">
+                            <input type="checkbox" class="form-check-input" id="typescript" value="typescript">
+                            <label class="form-check-label" for="typescript">TypeScript</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-check-label" for="form-project-upload-image">Image</label>
+                    <input type="file" class="form-control mt-2" id="form-project-upload-image">
+                </div>
+                <button onclick="formAlert()" class="btn btn-outline-success float-end">Submit</button>
+            </form>
+        </div>
     </div>
     <!-- Form Add New Project -->
     
-    <!-- List Projects -->
-    <div class="list-projects">
-        <div class="project-container">
-            <h1>My Project</h1>
-            <div id= "project-list" class="project-list">
-                <div id="project-items" class="project-items">
-                    <div class="project-items-container">
-                        <div class="project-list-image">
-                            <img src="assets/images/project-tumbnail.png" alt="project-list">
-                        </div>
-                        <div class="project-list-title">
-                            <p class="list-title"><a target="_blank" href="project-detail.html">Dumbways Bootcamp - 2023</a></p>
-                            <p class="list-duration">durasi : 15 Mei 2023 sampai 15 Agustus 2023</p>
-                        </div>
-                        <div class="description">
-                            <p class="list-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium nisi, modi illo, odit temporibus quod inventore nobis iure perferendis repellendus ut? Beatae et ratione fugit alias ex expedita, quaerat corporis, nobis nesciunt atque earum placeat quod eaque quae odio.</p>
-                        </div>
-                        <div class="technology">
-                            <img src="assets/images/reactjs.png" alt="reactjs">
-                            <img src="assets/images/nextjs.png" alt="nextjs">
-                            <img src="assets/images/nodejs.png" alt="nodejs">
-                            <img src="assets/images/typescript.png" alt="typescript">
-                        </div>
-                        <div class="project-list-button">
-                            <button class="edit" type="button">Edit</button>
-                            <button class="delete" type="button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-                <div id="project-items" class="project-items">
-                    <div class="project-items-container">
-                        <div class="project-list-image">
-                            <img src="assets/images/project-tumbnail.png" alt="project-list">
-                        </div>
-                        <div class="project-list-title">
-                            <p class="list-title"><a target="_blank" href="project-detail.html">Dumbways Bootcamp - 2023</a></p>
-                            <p class="list-duration">durasi : 15 Mei 2023 sampai 15 Agustus 2023</p>
-                        </div>
-                        <div class="description">
-                            <p class="list-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cupiditate accusantium nisi, modi illo, odit temporibus quod inventore nobis iure perferendis repellendus ut? Beatae et ratione fugit alias ex expedita, quaerat corporis, nobis nesciunt atque earum placeat quod eaque quae odio.</p>
-                        </div>
-                        <div class="technology">
-                            <img src="assets/images/reactjs.png" alt="reactjs">
-                            <img src="assets/images/nextjs.png" alt="nextjs">
-                            <img src="assets/images/nodejs.png" alt="nodejs">
-                            <img src="assets/images/typescript.png" alt="typescript">
-                        </div>
-                        <div class="project-list-button">
-                            <button class="edit" type="button">Edit</button>
-                            <button class="delete" type="button">Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- List Projects -->
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/myproject.js"></script>
     <script src="js/index.js"></script>
 </body>

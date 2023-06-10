@@ -1,14 +1,10 @@
 let dataProject = [];
 
 function formAlert() {
-    let projectName = document.getElementById("project-name").value;
+    let projectName = document.getElementById("project-title").value;
     let startDate = document.getElementById("start-date").value;
     let finishDate = document.getElementById("end-date").value;
     let description = document.getElementById("description").value;
-    let reactjs = document.getElementById("reactjs").value;
-    let nodejs = document.getElementById("nodejs").value;
-    let nextjs = document.getElementById("nextjs").value;
-    let typeScript = document.getElementById("typescript").value;
     let image = document.getElementById("form-project-upload-image").value;
     
     if(projectName == "") {
@@ -19,8 +15,6 @@ function formAlert() {
         return alert("Isi Tanggal Diakhirinya Project Terlebih Dahulu!");
     } else if(description == "") {
         return alert("Isi Deskripsi atau Isi Project Telebih Dahulu!");
-    } else if( reactjs.checked == "" || nodejs.checked == "" || nextjs.checked == "" || typeScript.checked == "") {
-        return alert("Isi Teknologi Yang Digunakan Telebih Dahulu!");
     } else if(image == "") {
         return alert("Pilih Gambar Yang Ingin Dimasukan Terlebih Dahulu!");
     }
@@ -37,7 +31,6 @@ function submitData(event) {
         let years = Math.floor(months / 12);
         let remainingDays = days % 30;
         let remainingMonths = months % 12;
-        let daysAffix = `$`
       
         if (years > 0 && remainingMonths > 0 && remainingDays > 0) {
             return `${years} Years ${remainingMonths} Months ${remainingDays} Days`;
@@ -58,7 +51,7 @@ function submitData(event) {
     
 
     // Deklarasi variable dari input
-    let title = document.getElementById("project-name").value;
+    let title = document.getElementById("project-title").value;
     let startDate = document.getElementById("start-date").value;
     let endDate = document.getElementById("end-date").value;
     let description = document.getElementById("description").value;
@@ -90,6 +83,7 @@ function submitData(event) {
         imageUrl,
         postAt: new Date()
     };
+
     dataProject.push(data);
     loopProjectList();
 }
@@ -99,33 +93,27 @@ function loopProjectList() {
 
     for (let i = 0; i < dataProject.length; i++) {
         document.getElementById("project-list").innerHTML += `
-            <div class="project-items">
-                <div class="project-items-container">
-                    <div class="project-list-image">
-                        <img src="${dataProject[i].imageUrl}" alt="project-list">
+        <div class="d-flex my-4 cards">
+            <div class="card">
+                <img src="${dataProject[i].imageUrl}" class="card-img-top" alt="">
+                <div class="card-body">
+                    <div class="mb-4">
+                        <h5 class="">${dataProject[i].title}</h5>
+                        <p class="list-duration">Durasi : ${dataProject[i].duration}</p>
                     </div>
-                    <div class="project-list-title">
-                        <p class="list-title"><a target="_blank" href="project-detail.html">${dataProject[i].title}</a></p>
-                        <p class="list-duration">durasi: ${dataProject[i].duration} </p>
-                    </div>
-                    <div>
-                        <p class="list-description">${dataProject[i].description}</p>
-                    </div>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                     <div class="technology">
                         ${dataProject[i].nodejsImg}
                         ${dataProject[i].nextjsImg}
                         ${dataProject[i].reactjsImg}
                         ${dataProject[i].typeScriptImg}
                     </div>
-                    <div class="project-list-button">
-                        <button class="edit" type="button">edit</button>
-                        <button class="delete" type="button">delete</button>
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="#" class="btn btn-outline-primary w-50 me-1">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="#" class="btn btn-outline-danger w-50 ms-1">Delete <i class="fa-solid fa-trash"></i></a>
                     </div>
-                </div>
-            </div>`;
+                </div>  
+            </div>
+        </div>`;
     }
 }
-
-// setInterval(function () {
-//     loopProjectList();
-//   }, 3000);
