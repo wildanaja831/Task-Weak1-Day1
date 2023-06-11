@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"net/http"
 	"strconv"
+	"time"
 
 	"github.com/labstack/echo/v4"
 )
@@ -13,6 +14,7 @@ type Project struct {
 	Title       string
 	Start       string
 	End         string
+	Duration    string
 	Description string
 	Reactjs     bool
 	Nextjs      bool
@@ -23,8 +25,9 @@ type Project struct {
 var dataProject = []Project{
 	{
 		Title:       "Mamang Racing Anjay",
-		Start:       "11 April 2004",
-		End:         "11 April 2104",
+		Start:       "2023-01-15",
+		End:         "2023-05-15",
+		Duration:    duration("2023-01-15", "2023-05-15"),
 		Description: "Siap Kerja 24 Jam Non Stop!",
 		Reactjs:     true,
 		Nextjs:      true,
@@ -33,8 +36,9 @@ var dataProject = []Project{
 	},
 	{
 		Title:       "Kerja Bagus!",
-		Start:       "11 April 2004",
-		End:         "11 April 2104",
+		Start:       "2023-02-15",
+		End:         "2024-05-15",
+		Duration:    duration("2023-02-15", "2024-05-15"),
 		Description: "Permainan Yang Sangat Baik!",
 		Reactjs:     true,
 		Nextjs:      true,
@@ -58,6 +62,7 @@ func main() {
 	// Post
 	e.POST("/add-project", addNewProject)
 	e.POST("/update-project/:id", updateProject)
+	e.POST("/delete-project/:id", deleteProject)
 
 	e.Logger.Fatal(e.Start("localhost:5000"))
 }
@@ -107,6 +112,7 @@ func detailProject(c echo.Context) error {
 				Title:       data.Title,
 				Start:       data.Start,
 				End:         data.End,
+				Duration:    data.Duration,
 				Description: data.Description,
 				Reactjs:     data.Reactjs,
 				Nextjs:      data.Nextjs,
@@ -143,6 +149,7 @@ func addNewProject(c echo.Context) error {
 		Title:       title,
 		Start:       start,
 		End:         end,
+		Duration:    duration(start, end),
 		Description: description,
 		Reactjs:     (reactjs == "reactjs"),
 		Nextjs:      (nextjs == "nextjs"),
@@ -163,9 +170,11 @@ func formUpdateProject(c echo.Context) error {
 	for i, data := range dataProject {
 		if id == i {
 			projectDetail = Project{
+				Id:          id,
 				Title:       data.Title,
 				Start:       data.Start,
 				End:         data.End,
+				Duration:    data.Duration,
 				Description: data.Description,
 				Reactjs:     data.Reactjs,
 				Nextjs:      data.Nextjs,
@@ -201,10 +210,10 @@ func updateProject(c echo.Context) error {
 	typescript := c.FormValue("typescript")
 
 	var newProject = Project{
-		Id:          id,
 		Title:       title,
 		Start:       start,
 		End:         end,
+		Duration:    duration(start, end),
 		Description: description,
 		Reactjs:     (reactjs == "reactjs"),
 		Nextjs:      (nextjs == "nextjs"),
@@ -215,4 +224,52 @@ func updateProject(c echo.Context) error {
 	dataProject[id] = newProject
 
 	return c.Redirect(http.StatusMovedPermanently, "/")
+}
+
+func deleteProject(c echo.Context) error {
+	id, _ := strconv.Atoi(c.Param("id"))
+
+	dataProject = append(dataProject[:id], dataProject[id+1:]...)
+
+	return c.Redirect(http.StatusMovedPermanently, "/")
+}
+
+func duration(startDate string, endDate string) string {
+	startTime, _ := time.Parse("2006-01-02", startDate)
+	endTime, _ := time.Parse("2006-01-02", endDate)
+
+	hours := int(endTime.Sub(startTime).Hours())
+	days := hours / 24
+	weeks := days / 7
+	months := weeks / 4
+	years := months / 12
+
+	var duration string
+
+	if years > 1 {
+		duration = strconv.Itoa(years) + " Tahun"
+	} else if years > 0 {
+		duration = strconv.Itoa(years) + " Tahun"
+	} else {
+		if months > 1 {
+			duration = strconv.Itoa(months) + " Bulan"
+		} else if months > 0 {
+			duration = strconv.Itoa(months) + " Bulan"
+		} else {
+			if weeks > 1 {
+				duration = strconv.Itoa(weeks) + " Minggu"
+			} else if weeks > 0 {
+				duration = strconv.Itoa(weeks) + " Minggu"
+			} else {
+				if days > 1 {
+					duration = strconv.Itoa(days) + " Hari"
+				} else {
+					duration = strconv.Itoa(days) + " Hari"
+				}
+			}
+		}
+	}
+
+	return duration
+
 }
