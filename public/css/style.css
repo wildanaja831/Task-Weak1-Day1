@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@700&display=swap');
+
+* {
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+/* Navbar */
+nav{
+  background-color: rgb(244, 243, 243) !important;
+}
+
+.active{
+  color: orange !important;
+}
+
+ul li a{
+  color: black !important;
+}
+
+ul li a:hover{
+  color: orange !important;
+}
+
+.cursor{
+  color: black;
+  cursor: pointer;
+}
+/* Navbar */
+
+/* Body */
+.media-social{
+  width: 240px; 
+  margin-top: 20px;
+}
+
+.description{
+  text-align: justify !important;
+}
+
+.media-social img{
+  width: 35px; 
+  margin: 0 10px;
+}
+/* Body */
+
+
+/* List Project */
+
+.technology img{
+  width: 35px;
+  margin-right: 10px;
+}
+
+.list-duration{
+  margin: 0;
+  font-size: 12px;
+  color: grey;
+}
+
+.bg-secondary{
+  background-color: rgb(244, 243, 243) !important;
+}
+
+.cards{
+  width: 30%;
+}
+
+@media only screen and (max-width: 992px){
+  .cards{
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .cards{
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+/* List Project */
+
+/* Testimonials */
+.cardt{
+  width: 30% !important;
+}
+
+@media only screen and (max-width: 992px){
+  .cardt{
+    width: 45%;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .cardt{
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+/* Testimonials */
+
+/* Contact */
+.contact{
+  width: 50%;
+}
+
+@media only screen and (max-width: 992px){
+  .contact{
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 768px){
+  .contact{
+    width: 80%;
+  }
+}
+/* Contact */
