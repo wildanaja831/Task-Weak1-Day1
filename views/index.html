@@ -76,138 +76,46 @@
                 <a class="btn btn-outline-success h-50 my-auto me-4" href="/form-project">Add New Project <i class="fa-solid fa-plus"></i></a>
             </div>
             <div class="d-flex flex-wrap justify-content-between text-center">
+                {{ range $index, $data := .Projects }}
                 <div class="d-flex my-4 cards">
                     <div class="card">
                         <img src="public/images/project-tumbnail.png" class="card-img-top" alt="">
                         <div class="card-body">
                             <div class="mb-4">
-                                <a href="/detail-project/1" class="text-decoration-none text-dark cursor">Bootcamp Dumbways 2023</a>
-                                <p class="list-duration">12 June 2023</p>
+                                <a href="/detail-project/{{ $index }}" class="text-decoration-none text-dark cursor">{{ $data.Title }}</a>
+                                <p class="list-duration">{{ $data.Start }} - {{ $data.End }}</p>
                             </div>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="technology">
-                                    <img src="public/images/reactjs.png" alt="reactjs">
-                                    <img src="public/images/nextjs.png" alt="nextjs">
-                                    <img src="public/images/nodejs.png" alt="nodejs">
-                                    <img src="public/images/typescript.png" alt="typescript">
+                            <p class="card-text">{{ $data.Description }}</p>
+                            <div class="d-flex justify-content-center">
+                                <div>
+                                    {{ if $data.Reactjs }}
+                                    <img class="w-100 me-2" src="public/images/reactjs.png" alt="reactjs">
+                                    {{ end }}
+                                </div>
+                                <div>
+                                    {{ if $data.Nextjs }}
+                                    <img class="w-75 me-2" src="public/images/nextjs.png" alt="nextjs">
+                                    {{ end }}
+                                </div>
+                                <div>
+                                    {{ if $data.Nodejs }}
+                                    <img class="w-100 me-2" src="public/images/nodejs.png" alt="nodejs">
+                                    {{ end }}
+                                </div>
+                                <div>
+                                    {{ if $data.Typescript }}
+                                    <img class="w-75" src="public/images/typescript.png" alt="typescript">
+                                    {{ end }}
+                                </div>
                             </div>
                             <div class="d-flex justify-content-between mt-4">
-                                <a href="#" class="btn btn-outline-primary w-50 me-1">Edit <i class="fa-solid fa-pen-to-square"></i></a>
+                                <a href="/update-project/{{ $index }}" class="btn btn-outline-primary w-50 me-1">Edit <i class="fa-solid fa-pen-to-square"></i></a>
                                 <a href="#" class="btn btn-outline-danger w-50 ms-1">Delete <i class="fa-solid fa-trash"></i></a>
                             </div>
                         </div>  
                     </div>
                 </div>
-                <div class="d-flex my-4 cards">
-                    <div class="card">
-                        <img src="public/images/project-tumbnail.png" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="mb-4">
-                                <a href="/detail-project/1" class="text-decoration-none text-dark cursor">Bootcamp Dumbways 2023</a>
-                                <p class="list-duration">12 June 2023</p>
-                            </div>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="technology">
-                                    <img src="public/images/reactjs.png" alt="reactjs">
-                                    <img src="public/images/nextjs.png" alt="nextjs">
-                                    <img src="public/images/nodejs.png" alt="nodejs">
-                                    <img src="public/images/typescript.png" alt="typescript">
-                            </div>
-                            <div class="d-flex justify-content-between mt-4">
-                                <a href="#" class="btn btn-outline-primary w-50 me-1">Edit <i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="#" class="btn btn-outline-danger w-50 ms-1">Delete <i class="fa-solid fa-trash"></i></a>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-                <div class="d-flex my-4 cards">
-                    <div class="card">
-                        <img src="public/images/project-tumbnail.png" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="mb-4">
-                                <a href="/detail-project/1" class="text-decoration-none text-dark cursor">Bootcamp Dumbways 2023</a>
-                                <p class="list-duration">12 June 2023</p>
-                            </div>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="technology">
-                                    <img src="public/images/reactjs.png" alt="reactjs">
-                                    <img src="public/images/nextjs.png" alt="nextjs">
-                                    <img src="public/images/nodejs.png" alt="nodejs">
-                                    <img src="public/images/typescript.png" alt="typescript">
-                            </div>
-                            <div class="d-flex justify-content-between mt-4">
-                                <a href="#" class="btn btn-outline-primary w-50 me-1">Edit <i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="#" class="btn btn-outline-danger w-50 ms-1">Delete <i class="fa-solid fa-trash"></i></a>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-                <div class="d-flex my-4 cards">
-                    <div class="card">
-                        <img src="public/images/project-tumbnail.png" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="mb-4">
-                                <a href="/detail-project/1" class="text-decoration-none text-dark cursor">Bootcamp Dumbways 2023</a>
-                                <p class="list-duration">12 June 2023</p>
-                            </div>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="technology">
-                                    <img src="public/images/reactjs.png" alt="reactjs">
-                                    <img src="public/images/nextjs.png" alt="nextjs">
-                                    <img src="public/images/nodejs.png" alt="nodejs">
-                                    <img src="public/images/typescript.png" alt="typescript">
-                            </div>
-                            <div class="d-flex justify-content-between mt-4">
-                                <a href="#" class="btn btn-outline-primary w-50 me-1">Edit <i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="#" class="btn btn-outline-danger w-50 ms-1">Delete <i class="fa-solid fa-trash"></i></a>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-                <div class="d-flex my-4 cards">
-                    <div class="card">
-                        <img src="public/images/project-tumbnail.png" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="mb-4">
-                                <a href="/detail-project/1" class="text-decoration-none text-dark cursor">Bootcamp Dumbways 2023</a>
-                                <p class="list-duration">12 June 2023</p>
-                            </div>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="technology">
-                                    <img src="public/images/reactjs.png" alt="reactjs">
-                                    <img src="public/images/nextjs.png" alt="nextjs">
-                                    <img src="public/images/nodejs.png" alt="nodejs">
-                                    <img src="public/images/typescript.png" alt="typescript">
-                            </div>
-                            <div class="d-flex justify-content-between mt-4">
-                                <a href="#" class="btn btn-outline-primary w-50 me-1">Edit <i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="#" class="btn btn-outline-danger w-50 ms-1">Delete <i class="fa-solid fa-trash"></i></a>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-                <div class="d-flex my-4 cards">
-                    <div class="card">
-                        <img src="public/images/project-tumbnail.png" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="mb-4">
-                                <a href="/detail-project/1" class="text-decoration-none text-dark cursor">Bootcamp Dumbways 2023</a>
-                                <p class="list-duration">12 June 2023</p>
-                            </div>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            <div class="technology">
-                                    <img src="public/images/reactjs.png" alt="reactjs">
-                                    <img src="public/images/nextjs.png" alt="nextjs">
-                                    <img src="public/images/nodejs.png" alt="nodejs">
-                                    <img src="public/images/typescript.png" alt="typescript">
-                            </div>
-                            <div class="d-flex justify-content-between mt-4">
-                                <a href="#" class="btn btn-outline-primary w-50 me-1">Edit <i class="fa-solid fa-pen-to-square"></i></a>
-                                <a href="#" class="btn btn-outline-danger w-50 ms-1">Delete <i class="fa-solid fa-trash"></i></a>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
+                {{ end }}
             </div>
         </div>
     </div>
