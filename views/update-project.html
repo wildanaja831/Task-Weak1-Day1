@@ -29,6 +29,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="/form-project">Add Project</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/testimonials">Testimonials</a>
+                    </li>
                 </ul>
                 <div class="d-flex justify-content-center">
                     <a class="btn btn-outline-success" href="/contact">Contact Me</a>
@@ -50,11 +53,11 @@
                 <div class="d-flex justify-content-between mb-3">
                     <div class="w-50 me-3">
                         <label for="start-date" class="form-label">Start Date</label>
-                        <input type="date" name="inputStart" class="form-control " id="start-date" value="{{ .Projects.Start }}">
+                        <input type="date" name="inputStart" class="form-control " id="start-date" value="{{ .StartDate }}">
                     </div>
                     <div class="w-50">
                         <label for="end-date" class="form-label">End Date</label>
-                        <input type="date" name="inputEnd" class="form-control w-100" id="end-date" value="{{ .Projects.End }}">
+                        <input type="date" name="inputEnd" class="form-control w-100" id="end-date" value="{{ .EndDate }}">
                     </div>
                 </div>
                 <div class="mb-3">

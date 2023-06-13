@@ -31,6 +31,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/form-project">Add Project</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/testimonials">Testimonials</a>
+                    </li>
                 </ul>
                 <div class="d-flex justify-content-center">
                     <a class="btn btn-outline-success" href="/contact">Contact Me</a>
@@ -82,8 +85,8 @@
                         <img src="public/images/project-tumbnail.png" class="card-img-top" alt="">
                         <div class="card-body">
                             <div class="mb-4">
-                                <a href="/detail-project/{{ $index }}" class="text-decoration-none text-dark cursor">{{ $data.Title }}</a>
-                                <p class="list-duration">{{ $data.Start }} - {{ $data.End }}</p>
+                                <a href="/detail-project/{{ $data.Id }}" class="text-decoration-none text-dark cursor">{{ $data.Title }}</a>
+                                <p class="list-duration">{{ $data.StartFormat }} - {{ $data.EndFormat }}</p>
                                 <p class="list-duration">{{ $data.Duration }}</p>
                             </div>
                             <p class="card-text">{{ $data.Description }}</p>
@@ -110,10 +113,10 @@
                                 </div>
                             </div>
                             <div class="d-flex justify-content-center mt-4">
-                                <form action="/update-project/{{ $index }}" method="get">
+                                <form action="/update-project/{{ $data.Id }}" method="get">
                                     <input class="btn btn-outline-primary delete" type="submit" value="Edit">
                                 </form>
-                                <form action="/delete-project/{{ $index }}" method="post">
+                                <form action="/delete-project/{{ $data.Id }}" method="post">
                                     <input class="btn btn-outline-danger ms-3 delete" type="submit" value="Delete" >
                                 </form>
                             </div>
