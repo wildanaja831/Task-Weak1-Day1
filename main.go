@@ -2,6 +2,7 @@ package main
 
 import (
 	"b47s1/connection"
+	"b47s1/middleware"
 	"context"
 	"html/template"
 	"log"
@@ -29,7 +30,8 @@ type Project struct {
 	StartFormat string
 	EndFormat   string
 	Image       string
-	Authorid    int
+	Author      string
+	AuthorId    int
 }
 
 type User struct {
@@ -52,6 +54,7 @@ func main() {
 	e := echo.New()
 
 	e.Static("/public", "public")
+	e.Static("/uploads", "uploads")
 
 	e.Use(session.Middleware(sessions.NewCookieStore([]byte("session"))))
 
@@ -74,30 +77,14 @@ func main() {
 	e.POST("/logout", logout)
 
 	// Post
-	e.POST("/add-project", addNewProject)
-	e.POST("/update-project/:id", updateProject)
+	e.POST("/add-project", middleware.UploadFile(addNewProject))
+	e.POST("/update-project/:id", middleware.UploadFile(updateProject))
 	e.POST("/delete-project/:id", deleteProject)
 
 	e.Logger.Fatal(e.Start("localhost:65534"))
 }
 
 func home(c echo.Context) error {
-	data, _ := connection.Conn.Query(context.Background(), "SELECT id, title, start_date, end_date, description, reactjs, nextjs, nodejs, typescript, duration FROM tb_projects")
-
-	var result []Project
-	for data.Next() {
-		var each = Project{}
-
-		err := data.Scan(&each.Id, &each.Title, &each.Start, &each.End, &each.Description, &each.Reactjs, &each.Nextjs, &each.Nodejs, &each.Typescript, &each.Duration)
-		if err != nil {
-			return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
-		}
-
-		each.StartFormat = each.Start.Format("2 January 2006")
-		each.EndFormat = each.End.Format("2 January 2006")
-
-		result = append(result, each)
-	}
 
 	var tmpl, err = template.ParseFiles("views/index.html")
 
@@ -106,6 +93,42 @@ func home(c echo.Context) error {
 	}
 
 	sess, _ := session.Get("session", c)
+
+	var result []Project
+	if sess.Values["isLogin"] != true {
+		data, _ := connection.Conn.Query(context.Background(), "SELECT tb_projects.id, title, start_date, end_date, description, reactjs, nextjs, nodejs, typescript, duration, image, tb_users.name AS author, author_id FROM tb_projects JOIN tb_users ON tb_projects.author_id = tb_users.id ORDER BY tb_projects.id DESC")
+
+		for data.Next() {
+			var each = Project{}
+
+			err := data.Scan(&each.Id, &each.Title, &each.Start, &each.End, &each.Description, &each.Reactjs, &each.Nextjs, &each.Nodejs, &each.Typescript, &each.Duration, &each.Image, &each.Author, &each.AuthorId)
+			if err != nil {
+				return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+			}
+
+			each.StartFormat = each.Start.Format("2 January 2006")
+			each.EndFormat = each.End.Format("2 January 2006")
+
+			result = append(result, each)
+		}
+	} else {
+		userId := sess.Values["id"].(int)
+		data, _ := connection.Conn.Query(context.Background(), "SELECT tb_projects.id, title, start_date, end_date, description, reactjs, nextjs, nodejs, typescript, duration, image, tb_users.name AS author FROM tb_projects JOIN tb_users ON tb_projects.author_id = tb_users.id WHERE tb_projects.author_id = $1 ORDER BY tb_projects.id DESC", userId)
+
+		for data.Next() {
+			var each = Project{}
+
+			err := data.Scan(&each.Id, &each.Title, &each.Start, &each.End, &each.Description, &each.Reactjs, &each.Nextjs, &each.Nodejs, &each.Typescript, &each.Duration, &each.Image, &each.Author)
+			if err != nil {
+				return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
+			}
+
+			each.StartFormat = each.Start.Format("2 January 2006")
+			each.EndFormat = each.End.Format("2 January 2006")
+
+			result = append(result, each)
+		}
+	}
 
 	if sess.Values["isLogin"] != true {
 		userData.IsLogin = false
@@ -202,8 +225,8 @@ func detailProject(c echo.Context) error {
 
 	var projectDetail = Project{}
 
-	err := connection.Conn.QueryRow(context.Background(), "SELECT id, title, start_date, end_date, description, reactjs, nextjs, nodejs, typescript, duration FROM tb_projects WHERE id=$1", id).Scan(
-		&projectDetail.Id, &projectDetail.Title, &projectDetail.Start, &projectDetail.End, &projectDetail.Description, &projectDetail.Reactjs, &projectDetail.Nextjs, &projectDetail.Nodejs, &projectDetail.Typescript, &projectDetail.Duration)
+	err := connection.Conn.QueryRow(context.Background(), "SELECT tb_projects.id, title, start_date, end_date, description, reactjs, nextjs, nodejs, typescript, duration, image, tb_users.name AS author FROM tb_projects JOIN tb_users ON tb_projects.author_id = tb_users.id WHERE tb_projects.id=$1", id).Scan(
+		&projectDetail.Id, &projectDetail.Title, &projectDetail.Start, &projectDetail.End, &projectDetail.Description, &projectDetail.Reactjs, &projectDetail.Nextjs, &projectDetail.Nodejs, &projectDetail.Typescript, &projectDetail.Duration, &projectDetail.Image, &projectDetail.Author)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
@@ -261,9 +284,13 @@ func addNewProject(c echo.Context) error {
 	if c.FormValue("typescript") == "typescript" {
 		typescript = true
 	}
+	sess, _ := session.Get("session", c)
+	author := sess.Values["id"].(int)
 
-	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_projects (title, start_date, end_date, description, reactjs, nextjs, nodejs, typescript, duration) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)",
-		title, start, end, description, reactjs, nextjs, nodejs, typescript, duration(start, end))
+	image := c.Get("dataFile").(string)
+
+	_, err := connection.Conn.Exec(context.Background(), "INSERT INTO tb_projects (title, start_date, end_date, description, reactjs, nextjs, nodejs, typescript, duration, image, author_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)",
+		title, start, end, description, reactjs, nextjs, nodejs, typescript, duration(start, end), image, author)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
@@ -277,8 +304,8 @@ func formUpdateProject(c echo.Context) error {
 
 	var projectDetail = Project{}
 
-	err := connection.Conn.QueryRow(context.Background(), "SELECT id, title, start_date, end_date, description, reactjs, nextjs, nodejs, typescript, duration FROM tb_projects WHERE id=$1", id).Scan(
-		&projectDetail.Id, &projectDetail.Title, &projectDetail.Start, &projectDetail.End, &projectDetail.Description, &projectDetail.Reactjs, &projectDetail.Nextjs, &projectDetail.Nodejs, &projectDetail.Typescript, &projectDetail.Duration)
+	err := connection.Conn.QueryRow(context.Background(), "SELECT id, title, start_date, end_date, description, reactjs, nextjs, nodejs, typescript, duration, image FROM tb_projects WHERE id=$1", id).Scan(
+		&projectDetail.Id, &projectDetail.Title, &projectDetail.Start, &projectDetail.End, &projectDetail.Description, &projectDetail.Reactjs, &projectDetail.Nextjs, &projectDetail.Nodejs, &projectDetail.Typescript, &projectDetail.Duration, &projectDetail.Image)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})
@@ -337,8 +364,10 @@ func updateProject(c echo.Context) error {
 		typescript = true
 	}
 
-	_, err := connection.Conn.Exec(context.Background(), "UPDATE tb_projects SET title=$1, start_date=$2, end_date=$3, description=$4, reactjs=$5, nextjs=$6, nodejs=$7, typescript=$8, duration=$9 WHERE id=$10",
-		title, start, end, description, reactjs, nextjs, nodejs, typescript, duration(start, end), id)
+	image := c.Get("dataFile").(string)
+
+	_, err := connection.Conn.Exec(context.Background(), "UPDATE tb_projects SET title=$1, start_date=$2, end_date=$3, description=$4, reactjs=$5, nextjs=$6, nodejs=$7, typescript=$8, duration=$9, image=$10 WHERE id=$11",
+		title, start, end, description, reactjs, nextjs, nodejs, typescript, duration(start, end), image, id)
 
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, map[string]string{"message": err.Error()})

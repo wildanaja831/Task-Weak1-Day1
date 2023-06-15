@@ -55,8 +55,8 @@
         <div class="mx-auto my-5" style="width: 80%;">
             <h1 class="my-4">{{ .Projects.Title }}</h1>
             <div class="d-flex my-5">
-                <div class="w-75">
-                    <img class="w-100" src="/public/images/project-tumbnail.png" alt="">
+                <div class="w-75 ">
+                    <img class="w-100 h-75" src="/uploads/{{ .Projects.Image }}" alt="" style="object-fit: cover;">
                 </div>
                 <div class="w-25 my-5 mx-3">
                     <div class="">
@@ -93,6 +93,10 @@
                                 <p class="my-auto ms-1">TypeScript</p>
                                 {{ end }}
                             </div>
+                        </div>
+                        <div class="">
+                            <h3>Author</h3>
+                            <p><i class="fa-solid fa-user"></i> {{ .Projects.Author }}</p>
                         </div>
                     </div>
                 </div>

@@ -103,15 +103,16 @@
                 {{ end }}
             </div>
             <div class="d-flex flex-wrap justify-content-between text-center">
+                
                 {{ range $index, $data := .Projects }}
                 <div class="d-flex my-4 cards">
                     <div class="card">
-                        <img src="public/images/project-tumbnail.png" class="card-img-top" alt="">
+                        <img src="/uploads/{{ $data.Image }}" class="card-img-top" alt="">
                         <div class="card-body">
                             <div class="mb-4">
                                 <a href="/detail-project/{{ $data.Id }}" class="text-decoration-none text-dark cursor">{{ $data.Title }}</a>
                                 <p class="list-duration">{{ $data.StartFormat }} - {{ $data.EndFormat }}</p>
-                                <p class="list-duration">{{ $data.Duration }}</p>
+                                <p class="list-duration">{{ $data.Duration }} | {{ $data.Author }}</p>
                             </div>
                             <p class="card-text">{{ $data.Description }}</p>
                             <div class="d-flex justify-content-center">
