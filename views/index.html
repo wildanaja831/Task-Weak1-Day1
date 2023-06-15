@@ -28,20 +28,42 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
+                    {{ if .DataSession.IsLogin }}
                     <li class="nav-item">
                         <a class="nav-link" href="/form-project">Add Project</a>
                     </li>
+                    {{ end }}
                     <li class="nav-item">
                         <a class="nav-link" href="/testimonials">Testimonials</a>
                     </li>
                 </ul>
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center align-items-center">
+                    {{ if .DataSession.IsLogin }}
+                    <p class="my-auto me-2">Hello, {{ .DataSession.Name }}</p>
+                    <form id="myform" action="/logout" method="post">
+                        <button onclick="document.getElementById('myform').submit()" class="border-0 me-2">Log Out</button>
+                    </form>
+                    {{ else }}
+                    <a class="nav-link me-2" href="/form-register">Register</a>
+                    <a class="nav-link me-3" href="/form-login">Login</a>
+                    {{ end }}
                     <a class="btn btn-outline-success" href="/contact">Contact Me</a>
                 </div>
             </div>
         </div>
     </nav>
     <!-- Navbar -->
+    {{if .FlashMessage}} {{if .FlashStatus}}
+    <div class="alert alert-success alert-dismissable fade show" role="alert">
+      <strong>{{.FlashMessage}}</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {{end}}{{end}}
     
     <!-- Boday Container -->
     <div class="container-fluid shadow-lg p-3 mb-5 bg-body rounded justify-content-between mt-sm-5 w-75 h-25 d-lg-flex">
@@ -76,7 +98,9 @@
         <div class="m-5">
             <div class="d-flex justify-content-between my-5 text-center bg-secondary rounded-4 shadow-lg">
                 <h3 class="p-4 m-0">My Projects</h2>
+                {{if .DataSession.IsLogin}}
                 <a class="btn btn-outline-success h-50 my-auto me-4" href="/form-project">Add New Project <i class="fa-solid fa-plus"></i></a>
+                {{ end }}
             </div>
             <div class="d-flex flex-wrap justify-content-between text-center">
                 {{ range $index, $data := .Projects }}
@@ -112,6 +136,7 @@
                                     {{ end }}
                                 </div>
                             </div>
+                            {{ if $.DataSession.IsLogin }}
                             <div class="d-flex justify-content-center mt-4">
                                 <form action="/update-project/{{ $data.Id }}" method="get">
                                     <input class="btn btn-outline-primary delete" type="submit" value="Edit">
@@ -120,6 +145,7 @@
                                     <input class="btn btn-outline-danger ms-3 delete" type="submit" value="Delete" >
                                 </form>
                             </div>
+                            {{ end }}
                         </div>  
                     </div>
                 </div>

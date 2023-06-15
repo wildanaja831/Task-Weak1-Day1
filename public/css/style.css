@@ -23,9 +23,10 @@ ul li a{
   color: black !important;
 }
 
-ul li a:hover{
+.nav-link:hover{
   color: orange !important;
 }
+
 
 .cursor{
   color: black;
